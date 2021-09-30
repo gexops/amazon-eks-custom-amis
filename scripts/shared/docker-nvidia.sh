@@ -55,6 +55,16 @@ elif is_ubuntu; then
   dpkg -i nvidia-headless-470_470.74-0ubuntu0.20.04.1_amd64.deb || apt install -f -y
   rm nvidia-headless-470_470.74-0ubuntu0.20.04.1_amd64.deb
 
+  # Need additional files for nvidia-smi?
+  wget https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+files/nvidia-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
+  dpkg -i nvidia-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb || apt install -f -y
+  rm nvidia-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
+
+  wget https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+files/nvidia-compute-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
+  dpkg -i nvidia-compute-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb || apt install -f -y
+  rm nvidia-compute-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
+
+
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
   add-apt-repository "deb [arch=${ARCH}] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   apt-get update -y

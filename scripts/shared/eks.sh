@@ -135,7 +135,12 @@ systemctl daemon-reload && systemctl disable kubelet
 
 mkdir -p /etc/eks
 curl -sL -o /etc/eks/eni-max-pods.txt https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/eni-max-pods.txt
-curl -sL -o /etc/eks/bootstrap.sh https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/bootstrap.sh
+#curl -sL -o /etc/eks/bootstrap.sh https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/bootstrap.sh
+# Use Previous Version of bootstrap
+# https://github.com/aws-samples/amazon-eks-custom-amis/pull/40
+
+curl -sL -o /etc/eks/bootstrap.sh https://raw.githubusercontent.com/gexops/amazon-eks-ami/master/files/bootstrap.sh
+
 chmod +x /etc/eks/bootstrap.sh
 
 ################################################################################
