@@ -50,19 +50,23 @@ elif is_ubuntu; then
   echo "Installing Nvidia Runtime with Docker"
   apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
   apt-get install -y gcc make linux-headers-$(uname -r)
-  
-  wget https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+files/nvidia-headless-470_470.74-0ubuntu0.20.04.1_amd64.deb
-  dpkg -i nvidia-headless-470_470.74-0ubuntu0.20.04.1_amd64.deb || apt install -f -y
-  rm nvidia-headless-470_470.74-0ubuntu0.20.04.1_amd64.deb
+  add-apt-repository ppa:graphics-drivers
+  apt-get update
+  apt-get install -y nvidia-headless-470 nvidia-utils-470 nvidia-compute-utils-470
+  apt-mark hold nvidia-headless-470 nvidia-utils-470 nvidia-compute-utils-470
+
+  #wget https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+files/nvidia-headless-470_470.74-0ubuntu0.20.04.1_amd64.deb
+  #dpkg -i nvidia-headless-470_470.74-0ubuntu0.20.04.1_amd64.deb || apt install -f -y
+  #rm nvidia-headless-470_470.74-0ubuntu0.20.04.1_amd64.deb
 
   # Need additional files for nvidia-smi?
-  wget https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+files/nvidia-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
-  dpkg -i nvidia-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb || apt install -f -y
-  rm nvidia-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
+  #wget https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+files/nvidia-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
+  #dpkg -i nvidia-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb || apt install -f -y
+  #rm nvidia-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
 
-  wget https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+files/nvidia-compute-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
-  dpkg -i nvidia-compute-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb || apt install -f -y
-  rm nvidia-compute-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
+  #wget https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+files/nvidia-compute-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
+  #dpkg -i nvidia-compute-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb || apt install -f -y
+  #rm nvidia-compute-utils-470_470.74-0ubuntu0.20.04.1_amd64.deb
 
 
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
