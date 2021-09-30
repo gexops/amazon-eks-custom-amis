@@ -1,16 +1,18 @@
 
 PACKER_VARIABLES := binary_bucket_name binary_bucket_region eks_version eks_build_date cni_plugin_version root_volume_size data_volume_size hardening_flag http_proxy https_proxy no_proxy
-VPC_ID := vpc-0e8cf1ce122b1b059
-SUBNET_ID := subnet-0eddf1d7d0f9f9772
-AWS_REGION := us-east-2
+VPC_ID := vpc-dfceb2a2
+SUBNET_ID := subnet-02287d324367aa54e
+AWS_REGION := us-east-1
 PACKER_FILE := 
 
-EKS_BUILD_DATE := 2020-11-02
+EKS_BUILD_DATE := 2021-09-02
 EKS_115_VERSION := 1.15.12
 EKS_116_VERSION := 1.16.15
 EKS_117_VERSION := 1.17.12
 EKS_118_VERSION := 1.18.9
 EKS_119_VERSION := 1.19.6
+EKS_120_VERSION := 1.20.7
+EKS_121_VERSION := 1.21.2
 
 build:
 	packer build \
@@ -70,6 +72,19 @@ build-ubuntu2004-1.18:
 
 build-ubuntu2004-1.19:
 	$(MAKE) build PACKER_FILE=amazon-eks-node-ubuntu2004.json eks_version=$(EKS_119_VERSION) eks_build_date=2021-01-05
+
+# Ubuntu 20.04 - GPU
+#-----------------------------------------------------
+
+build-ubuntu2004gpu-1.20:
+	$(MAKE) build PACKER_FILE=amazon-eks-node-ubuntu2004-gpu.json eks_version=$(EKS_120_VERSION) eks_build_date=$(EKS_BUILD_DATE)
+
+build-ubuntu2004gpu-1.21:
+	$(MAKE) build PACKER_FILE=amazon-eks-node-ubuntu2004-gpu.json eks_version=$(EKS_121_VERSION) eks_build_date=$(EKS_BUILD_DATE)
+
+
+build-ubuntu2004gpu-1.21-spot:
+	$(MAKE) build PACKER_FILE=amazon-eks-node-ubuntu2004-gpu-spot.json eks_version=$(EKS_121_VERSION) eks_build_date=$(EKS_BUILD_DATE)
 
 # RHEL 7
 #-----------------------------------------------------
