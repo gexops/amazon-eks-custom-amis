@@ -38,7 +38,13 @@ elif is_ubuntu; then
         curl \
         socat \
         unzip \
-        nfs-common
+        nfs-common \
+        fuse3 \
+        libfuse3-3 \
+        libfuse3-dev \
+        fuse-overlayfs \
+        dbus-user-session \ 
+        uidmap
 
 else
 

@@ -4,6 +4,14 @@ set -o pipefail
 set -o nounset
 set -o errexit
 
+has_nvme=$(lsblk -f | grep -q nvme1n1 && echo yes || echo no)
+    if [[ "$has_nvme" ==  "yes" ]]; then
+        mkfs.ext4 -E nodiscard /dev/nvme1n1
+        mkdir -p /mnt/disks/data
+        mount -o discard /dev/nvme1n1 /mnt/disks/data
+        chown root:root /mnt/disks/data
+    fi
+
 err_report() {
     echo "Exited with error on line $1"
 }

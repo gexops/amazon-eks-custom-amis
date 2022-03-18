@@ -52,8 +52,8 @@ elif is_ubuntu; then
   apt-get install -y gcc make linux-headers-$(uname -r)
   add-apt-repository ppa:graphics-drivers
   apt-get update
-  apt-get install -y nvidia-headless-470 nvidia-utils-470 nvidia-compute-utils-470
-  apt-mark hold nvidia-headless-470 nvidia-utils-470 nvidia-compute-utils-470
+  apt-get install -y nvidia-headless-510 nvidia-utils-510 nvidia-compute-utils-510
+  apt-mark hold nvidia-headless-510 nvidia-utils-510 nvidia-compute-utils-510
 
   #wget https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+files/nvidia-headless-470_470.74-0ubuntu0.20.04.1_amd64.deb
   #dpkg -i nvidia-headless-470_470.74-0ubuntu0.20.04.1_amd64.deb || apt install -f -y
