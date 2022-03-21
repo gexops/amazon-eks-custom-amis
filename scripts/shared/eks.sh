@@ -43,7 +43,7 @@ elif is_ubuntu; then
         libfuse3-3 \
         libfuse3-dev \
         fuse-overlayfs \
-        dbus-user-session \ 
+        dbus-user-session \
         uidmap
 
 else
