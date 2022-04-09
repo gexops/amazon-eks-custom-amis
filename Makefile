@@ -13,6 +13,8 @@ EKS_118_VERSION := 1.18.9
 EKS_119_VERSION := 1.19.6
 EKS_120_VERSION := 1.20.7
 EKS_121_VERSION := 1.21.5
+EKS_122_VERSION := 1.22.6
+EKS_122_BUILD_DATE := 2022-03-09
 
 build:
 	packer build \
@@ -80,11 +82,18 @@ build-ubuntu2004gpu-1.20:
 	$(MAKE) build PACKER_FILE=amazon-eks-node-ubuntu2004-gpu.json eks_version=$(EKS_120_VERSION) eks_build_date=$(EKS_BUILD_DATE)
 
 build-ubuntu2004gpu-1.21:
-	$(MAKE) build PACKER_FILE=amazon-eks-node-ubuntu2004-gpu.json eks_version=$(EKS_121_VERSION) eks_build_date=$(EKS_BUILD_DATE)
+	$(MAKE) build PACKER_FILE=amazon-eks-node-ubuntu2004-cpu.json eks_version=$(EKS_121_VERSION) eks_build_date=$(EKS_BUILD_DATE)
 
 
 build-ubuntu2004gpu-1.21-spot:
-	$(MAKE) build PACKER_FILE=amazon-eks-node-ubuntu2004-gpu-spot.json eks_version=$(EKS_121_VERSION) eks_build_date=$(EKS_BUILD_DATE)
+	$(MAKE) build PACKER_FILE=amazon-eks-node-ubuntu2004-cpu-spot.json eks_version=$(EKS_121_VERSION) eks_build_date=$(EKS_BUILD_DATE)
+
+build-ubuntu2004gpu-1.22:
+	$(MAKE) build PACKER_FILE=amazon-eks-node-ubuntu2004-cpu.json eks_version=$(EKS_122_VERSION) eks_build_date=$(EKS_122_BUILD_DATE)
+
+
+build-ubuntu2004gpu-1.22-spot:
+	$(MAKE) build PACKER_FILE=amazon-eks-node-ubuntu2004-cpu-spot.json eks_version=$(EKS_122_VERSION) eks_build_date=$(EKS_122_BUILD_DATE)
 
 # RHEL 7
 #-----------------------------------------------------
